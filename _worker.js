@@ -123,13 +123,13 @@ export default {
 				if (url.searchParams.has('sub') && url.searchParams.get('sub') !== '') sub = url.searchParams.get('sub');
 
 				if (url.searchParams.has('proxyip')) {
-					path = `/?ed=2560&proxyip=${url.searchParams.get('proxyip')}`;
+					path = `/?proxyip=${url.searchParams.get('proxyip')}`;
 					RproxyIP = 'false';
 				} else if (url.searchParams.has('socks5')) {
-					path = `/?ed=2560&socks5=${url.searchParams.get('socks5')}`;
+					path = `/?socks5=${url.searchParams.get('socks5')}`;
 					RproxyIP = 'false';
 				} else if (url.searchParams.has('socks')) {
-					path = `/?ed=2560&socks5=${url.searchParams.get('socks')}`;
+					path = `/?socks5=${url.searchParams.get('socks')}`;
 					RproxyIP = 'false';
 				}
 				switch (url.pathname) {
@@ -743,6 +743,7 @@ async function get特洛伊Config(password, hostName, sub, UA, RproxyIP, _url, f
 				return randomIP.join('.');
 			}
 			addresses = addresses.concat('127.0.0.1:1234#CFnat');
+			let counter = 1;
 			const randomPorts = httpsPorts.concat('443');
 			addresses = addresses.concat(
 				cfips.map(cidr => generateRandomIPFromCIDR(cidr) + ':' + randomPorts[Math.floor(Math.random() * randomPorts.length)] + '#CF随机节点' + String(counter++).padStart(2, '0'))
@@ -1254,14 +1255,15 @@ function subAddresses(host, pw, userAgent, newAddressesapi, newAddressescsv) {
 		let 伪装域名 = host;
 		let 最终路径 = path;
 		let 节点备注 = '';
-
+		const matchingProxyIP = proxyIPPool.find(proxyIP => proxyIP.includes(address));
+		if (matchingProxyIP) 最终路径 = `/?proxyip=${matchingProxyIP}`;
+		
 		if (proxyhosts.length > 0 && (伪装域名.includes('.workers.dev'))) {
 			最终路径 = `/${伪装域名}${最终路径}`;
 			伪装域名 = proxyhosts[Math.floor(Math.random() * proxyhosts.length)];
 			节点备注 = ` 已启用临时域名中转服务，请尽快绑定自定义域！`;
 		}
-		const matchingProxyIP = proxyIPPool.find(proxyIP => proxyIP.includes(address));
-		if (matchingProxyIP) 最终路径 += `&proxyip=${matchingProxyIP}`;
+
 		let 密码 = pw;
 		if (!userAgent.includes('subconverter')) 密码 = encodeURIComponent(pw);
 
