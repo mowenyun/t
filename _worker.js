@@ -1423,19 +1423,19 @@ function subAddresses(host, pw, userAgent, newAddressesapi, newAddressescsv) {
         let 节点备注 = '';
         const matchingProxyIP = proxyIPPool.find(proxyIP => proxyIP.includes(address));
         if (matchingProxyIP) 最终路径 = `/proxyip=${matchingProxyIP}`;
-
+        /*
         if (proxyhosts.length > 0 && (伪装域名.includes('.workers.dev'))) {
             最终路径 = `/${伪装域名}${最终路径}`;
             伪装域名 = proxyhosts[Math.floor(Math.random() * proxyhosts.length)];
             节点备注 = ` 已启用临时域名中转服务，请尽快绑定自定义域！`;
         }
-
+        */
         let 密码 = pw;
         if (!userAgent.includes('subconverter')) 密码 = encodeURIComponent(pw);
 
         const 啥啥啥_写的这是啥啊 = 'dHJvamFu';
         const 协议类型 = atob(啥啥啥_写的这是啥啊);
-        const 特洛伊Link = `${协议类型}://${密码}@${address}:${port}?security=tls&sni=${伪装域名}&fp=randomized&type=ws&host=${伪装域名}&path=${encodeURIComponent(最终路径) + allowInsecure}&fragment=1,40-60,30-50,tlshello#${encodeURIComponent(addressid + 节点备注)}`;
+        const 特洛伊Link = `${协议类型}://${密码}@${address}:${port}?security=tls&sni=${伪装域名}&fp=randomized&type=ws&host=${伪装域名}&path=${encodeURIComponent(最终路径) + allowInsecure}&fragment=${encodeURIComponent('1,40-60,30-50,tlshello')}#${encodeURIComponent(addressid + 节点备注)}`;
 
         return 特洛伊Link;
     }).join('\n');
