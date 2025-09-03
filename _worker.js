@@ -1000,11 +1000,11 @@ async function get特洛伊Config(password, hostName, sub, UA, RproxyIP, _url, f
         try {
             let content;
             if ((!sub || sub == "") && isBase64 == true) {
-                content = await subAddresses(fakeHostName, fakeUserID, userAgent, newAddressesapi, newAddressescsv);
+                content = await subAddresses(fakeHostName, fakeUserID, userAgent, newAddressesapi, newAddressescsv); // 生成本地订阅内容
             } else {
                 const response = await fetch(url, {
                     headers: {
-                        'User-Agent': (isBase64 ? 'v2rayN' : UA) + atob('Q0YtV29ya2Vycy1lcGVpdXMvY21saXU='),
+                        'User-Agent': 'Mozilla/5.0' + atob('Q0YtV29ya2Vycy1lcGVpdXMvY21saXU='),
                     }
                 });
                 content = await response.text();
