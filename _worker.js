@@ -1207,7 +1207,7 @@ function subAddresses(host, pw, userAgent, newAddressesapi, newAddressescsv) {
 
         const 啥啥啥_写的这是啥啊 = 'dHJvamFu';
         const 协议类型 = atob(啥啥啥_写的这是啥啊);
-        const 特洛伊Link = `${协议类型}://${密码}@${address}:${port}?security=tls&sni=${伪装域名}&fp=randomized&type=ws&host=${伪装域名}&path=${encodeURIComponent(最终路径) + allowInsecure}&fragment=${encodeURIComponent('1,40-60,30-50,tlshello')}#${encodeURIComponent(addressid + 节点备注)}`;
+        const 特洛伊Link = `${协议类型}://${密码}@${address}:${port}?security=tls&sni=${伪装域名}&fp=random&type=ws&host=${伪装域名}&path=${encodeURIComponent(最终路径) + allowInsecure}&fragment=${encodeURIComponent('1,40-60,30-50,tlshello')}#${encodeURIComponent(addressid + 节点备注)}`;
 
         return 特洛伊Link;
     }).join('\n');
@@ -3752,8 +3752,8 @@ async function config_Json(userID, hostName, sub, UA, 请求CF反代IP, _url, fa
             SUBCONFIG: subConfig
         },
         link: {
-            v2: `${atob(啥啥啥_写的这是啥啊)}://${encodeURIComponent(userID)}@${hostName}:443?security=tls&sni=${hostName}&alpn=h3&fp=randomized&type=ws&host=${hostName}&path=${encodeURIComponent(path) + allowInsecure}&fragment=${encodeURIComponent('1,40-60,30-50,tlshello')}#${encodeURIComponent(FileName)}`,
-            clash: `- {name: ${FileName}, server: ${hostName}, port: 443, udp: false, client-fingerprint: randomized, type: ${atob(啥啥啥_写的这是啥啊)}, password: ${userID}, sni: ${hostName}, alpn: [h3], skip-cert-verify: ${SCV}, network: ws, ws-opts: {path: '${path}', headers: {Host: ${hostName}}}}`,
+            v2: `${atob(啥啥啥_写的这是啥啊)}://${encodeURIComponent(userID)}@${hostName}:443?security=tls&sni=${hostName}&alpn=h3&fp=random&type=ws&host=${hostName}&path=${encodeURIComponent(path) + allowInsecure}&fragment=${encodeURIComponent('1,40-60,30-50,tlshello')}#${encodeURIComponent(FileName)}`,
+            clash: `- {name: ${FileName}, server: ${hostName}, port: 443, udp: false, client-fingerprint: random, type: ${atob(啥啥啥_写的这是啥啊)}, password: ${userID}, sni: ${hostName}, alpn: [h3], skip-cert-verify: ${SCV}, network: ws, ws-opts: {path: '${path}', headers: {Host: ${hostName}}}}`,
         },
         KV: env.KV ? true : false,
         UA: UA || null
