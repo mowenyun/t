@@ -15,10 +15,10 @@ jobs:
         id: sync
         uses: aormsby/Fork-Sync-With-Upstream-action@v3.4  # 使用最新版本
         with:
-          target_sync_branch: beta  # 修正为 target_sync_branch
-          upstream_repository: cmliu/epeius  # 修正为 upstream_repository
-          upstream_branch: beta  # 确认上游分支
-          token: ${{ secrets.GITHUB_TOKEN }}  # 修正为 token
+          target_sync_branch: beta  # 目标同步分支
+          upstream_repo: cmliu/epeius  # 上游仓库
+          upstream_branch: beta  # 上游分支
+          token: ${{ secrets.GITHUB_TOKEN }}  # 认证 token
           test_mode: false
       - name: Check Sync Status
         if: steps.sync.outputs.has_new_commits == 'true'
