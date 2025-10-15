@@ -9,7 +9,6 @@ let subConfig = atob('aHR0cHM6Ly9yYXcuZ2l0aHVidXNlcmNvbnRlbnQuY29tL0FDTDRTU1IvQU
 let subProtocol = 'https';
 let subEmoji = 'true';
 let socks5Address = '';
-let parsedSocks5Address = {};
 let enableSocks = false;
 let enableHttp = false;
 const expire = 4102329600;//2099-12-31
@@ -122,7 +121,7 @@ export default {
             if (env.BAN) banHosts = await ADD(env.BAN);
             if (socks5Address) {
                 try {
-                    parsedSocks5Address = socks5AddressParser(socks5Address);
+                    socks5AddressParser(socks5Address);
                     请求CF反代IP = env.RPROXYIP || 'false';
                     enableSocks = true;
                 } catch (err) {
