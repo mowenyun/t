@@ -15,11 +15,11 @@ jobs:
         id: sync
         uses: aormsby/Fork-Sync-With-Upstream-action@v3.4  # 使用最新版本
         with:
-          target_sync_branch: beta  # 目标同步分支
-          upstream_repo: cmliu/epeius  # 上游仓库
-          upstream_branch: beta  # 上游分支
-          token: ${{ secrets.GITHUB_TOKEN }}  # 认证 token
-          test_mode: false
+          target_sync_branch: beta  # 目标同步分支（必填）
+          target_repo_token: ${{ secrets.GITHUB_TOKEN }}  # 推送 token（必填）
+          upstream_sync_repo: cmliu/epeius  # 上游仓库名称（必填）
+          upstream_sync_branch: beta  # 上游同步分支（必填）
+          test_mode: false  # 测试模式（可选，默认 false）
       - name: Check Sync Status
         if: steps.sync.outputs.has_new_commits == 'true'
         run: echo "New commits synced to beta!"
