@@ -13,11 +13,11 @@ jobs:
         uses: actions/checkout@v4
       - name: Sync with Upstream
         id: sync
-        uses: aormsby/Fork-Sync-With-Upstream-action@v3.4  # 使用最新版本
+        uses: aormsby/Fork-Sync-With-Upstream-action@v3.4.1  # 最新版本
         with:
           target_sync_branch: beta  # 目标同步分支（必填）
           target_repo_token: ${{ secrets.GITHUB_TOKEN }}  # 推送 token（必填）
-          upstream_sync_repo: cmliu/epeius  # 上游仓库名称（必填）
+          upstream_sync_repo: cmliu/epeius  # 上游仓库（必填，格式: owner/repo）
           upstream_sync_branch: beta  # 上游同步分支（必填）
           test_mode: false  # 测试模式（可选，默认 false）
       - name: Check Sync Status
